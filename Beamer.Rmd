@@ -1,0 +1,56 @@
+---
+title: "Workshop zu Datenqualität"
+author: "City Lab Berlin"
+date: "Datum TBD"
+output:
+  beamer_presentation:
+    theme: "Hannover"
+    colortheme: "seahorse"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# 1. Einführung
+
+## Was ist Datenqualität?
+
+### Verschiedene wege, das zu definieren: 
+- FAIR-Prinzipe (Findable, Accessible, Interoperable, Reusable)
+- 5-Sterne-Modell
+- Diese Modellen bieten allgemeine Prinzipe und Leitlinien an (sind aber meistens nicht spezifisch genug, um bei der Aufbereitung von einzelnen Datensätzen zu unterstützen)
+
+## Relevanz von Datenqualität
+
+# *Quiz*
+
+### Verständlichkeit
+
+# 2. Daten- formate
+
+## CSV
+
+### Was ist ein CSV?
+- Text-Datei
+- Einfaches Dateiformat
+- Werte werden mit einem Trennzeichen abgetrennt 
+- Stärker Fokus auf Machine-Readability
+
+
+## Excel
+
+
+### Was ist eine Excel-Datei?
+- Tabelle, die mit Excel bearbeitet werden kann
+- Komplexes Dateiformat
+- Stärker Fokus auf Human-Readability
+
+
+# *Quiz*
+
+# 3. Allgemeine Hinweise
+
+# 4. Beispiel
+
+
