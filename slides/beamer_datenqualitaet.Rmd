@@ -7,71 +7,117 @@ output:
     colortheme: seahorse
     theme: Hannover
   slidy_presentation: default
+  ioslides_presentation: default
 fontsize: 14pt
-header-includes:
-    \usepackage{graphicx}
-    \usepackage{graphbox}
+header-includes: \usepackage{graphicx} \usepackage{graphbox}
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+options(tinytex.verbose = TRUE)
 ```
 
 # Einführung
 
-### Plan
+## Plan
 
-- **Theorie**
+1. **Theorie**
 
-  + Was ist Daten-Qualität?
-  + Relevanz von Daten-Qualität
+  + Was ist Datenqualität?
+  + Relevanz von Datenqualität
   
-- **Anwendung**
+2. **Praxis**
 
-  + Excel
-  + CSV
-  + Andere Formate
-  + Formatentscheidung
-  + Doppelcheckliste
+  + Datenqualität für Excel-Dateien
+  + Datenqualität für CSV-Dateien
+  + Excel vs. CSV: Welches sollte ich nutzen?
+  + Andere Datenformate
+  + Häufige Datenqualitäts-Probleme  
 
 # 1. Theorie
 
 ## Was ist Datenqualität?
 
-### Datenqualität definieren 
-- *FAIR-Prinzipe *
+Wie bewertet man die Qualität eines Datensatzes?
+
+- 2 Dimensionen:
+
+  + Wie sind die Daten *aufbereitet*? 
   
-  + **F**indable
+  + Wie sind die Daten *bereitgestellt*?
   
-  + **A**ccessible
+## Was ist Datenqualität?
+
+- Neben der Aufbereitung und Bereitstellung der Daten, kann man auch hinterfragen, wie die Daten tatsächlich erhoben wurden
+<!-- zB: Gab es ein Bias oder einen systematischen Fehler bei der Erfassung der Daten? -->
+
+  + Werden wir aber bei diesem Workshop nicht disktutieren
   
-  + **I**nteroperable
+## Warum reden wir darüber?
+
+\vspace{0.5cm}
+
+- Datenqualität ist so wichtig weil: "Garbage in, garbage out"
+
+  - Die Qualität des Inputs bestimmt die Qualität des Outputs!
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{images/pic3}
+\end{center}
+
   
-  + **R**eusable
-  
-\vspace{1.5cm}  
-  
-\scriptsize{\textbf{Quelle}: Wilkinson, M. D. et al. (2016)}
-  
-  
-### Datenqualität definieren 
+## Bewertung der Datenqualität
+<!-- Diese Liste ist nicht unfassend, aber aus unserer Sicht stellen diese 3 Modelle die gängigsten Perspektiven auf Datenqualität dar -->
+3 Beispiele von Heransgehenweisen:
+
+1. FAIR-Prinzipe
+
+2. 5-Sterne-Modell
+
+3. NQDM Merkmale der Datenqualität
+
+<!-- End of new slides added VB-->
 
 
-- **Findable**: *Wo finde ich die Daten?*
+## Bewertung der Datenqualität
+
+1. **FAIR**
+
+- FAIR-Data ist:
   
-  + Datensatz registriert oder indiziert
+  + **F**indable (Auffindbar)
+  
+  + **A**ccessible (Zugänglich)
+  
+  + **I**nteroperable (Interoperabel)
+  
+  + **R**eusable (Wiederverwendbar)
+  
+\vspace{.5cm}  
+  
+\scriptsize\textbf{Quelle}: Wilkinson, M. D. et al. (2016)
+  
+  
+## Bewertung der Datenqualität
+
+
+- **Findable**: *Wo/wie sind die Daten auffindbar?*
+  
+  + Datensatz ist registriert oder indiziert (z.B.: in einem Datenportal)
     
-  + Dauerhafte Identifikationsnummer
+  + Dauerhafte Bezeichnung (Stable ID)
     
-  + Ausführliche Beschreibung 
+  + Ausführliche Beschreibung des Inhalts
   
   \vspace{1.5cm}  
   
-\scriptsize{\textbf{Quelle}: Wilkinson, M. D. et al. (2016)}
-  
-### Datenqualität definieren 
+\scriptsize\textbf{Quelle}: Wilkinson, M. D. et al. (2016)
 
-- **Accessible**: *Wie kann ich die Daten zugreifen?*
+  
+## Bewertung der Datenqualität
+
+- **Accessible**: *Wie kann ich auf die Daten zugreifen?*
   
   + Klar und kostenlosen Zugriffsprotokoll
   
@@ -81,82 +127,86 @@ knitr::opts_chunk$set(echo = FALSE)
   
   \vspace{0.5cm}  
   
-\scriptsize{\textbf{Quelle}: Wilkinson, M. D. et al. (2016)}
+\scriptsize\textbf{Quelle}: Wilkinson, M. D. et al. (2016)
   
-### Datenqualität definieren 
+## Bewertung der Datenqualität
 
-- **Interoperable**: *Wie kann ich die Daten verwenden?*
+- **Interoperable**: *Wie leicht ist es, die Daten im Zusammenhang mit anderen Systemen oder Datensätzen zu verwenden?*
   
   + Formale und zugängliche Sprache
   
   + Verweise auf andere Daten
   
-  + Ermöglichte Integration mit anderen Datensätzen
+  + Mögliche Integration mit anderen Datensätzen
   
-  \vspace{1cm}  
+  \vspace{.5cm}  
   
-\scriptsize{\textbf{Quelle}: Wilkinson, M. D. et al. (2016)}
+\scriptsize\textbf{Quelle}: Wilkinson, M. D. et al. (2016)
   
-### Datenqualität definieren 
+## Bewertung der Datenqualität
 
-- **Reusable**: *Wie kann ich die Daten replizieren?*
+- **Reusable**: *Wie kann ich diese Daten wiederverwenden?*
 
-  + Detaillierter Herkunft 
+  + Detaillierter Herkunft: Wo kommen die Daten her? 
     
-  + Klare und zugängliche Datennutzungslizenz
+  + Verständliche Lizenzierung
   
   \vspace{1.5cm}  
   
-\scriptsize{\textbf{Quelle}: Wilkinson, M. D. et al. (2016)}
+\scriptsize\textbf{Quelle}: Wilkinson, M. D. et al. (2016)
   
-### Datenqualität definieren 
-
+## Bewertung der Datenqualität
   
-- **5-Sterne-Modell**
-
-  + Kaskadierend Modell (von 1 bis 5 Sternen)
+2. **5-Sterne-Modell**
+<!-- New content added to this slide VB -->
 
 \begin{center}
-\includegraphics[width=0.8\textwidth]{pic1}
+\includegraphics[width=0.8\textwidth]{images/pic1}
 \end{center}
 
 
-### Datenqualität definieren 
+## Bewertung der Datenqualität
 
 \begin{center}
 Daten im Web (ex.: PDF)
 
-\includegraphics[width=0.1\textwidth]{arrow.png}
+\includegraphics[width=0.1\textwidth]{images/arrow.png}
 
 
 Daten in strukturiertem Format (ex.: XLS)
   
 
-\includegraphics[width=0.1\textwidth]{arrow.png}
+\includegraphics[width=0.1\textwidth]{images/arrow.png}
 
 
 Daten in strukturiertem, nicht proprietärem Format (ex.: CSV)
 
 \end{center}
   
-### Datenqualität definieren 
+## Bewertung der Datenqualität
 
 
 \begin{center}
 
-\includegraphics[width=0.1\textwidth]{arrow.png}
+\includegraphics[width=0.1\textwidth]{images/arrow.png}
 
 Verwendung von eindeutigen URLs (ex.: RDF)
 
-\includegraphics[width=0.1\textwidth]{arrow.png}
+\includegraphics[width=0.1\textwidth]{images/arrow.png}
 
 Verlinkung der eigenen Daten mit anderen Daten (ex.: LOD)
 
 \end{center}
 
-### Datenqualität definieren 
+## Bewertung der Datenqualität
+<!-- New content added to this slide VB -->
+
+3. **Merkmale der Datenqualität** aus dem "Normentwurf für qualitativ hochwertige Daten und Metadaten" (NQDM, Fraunhofer FOKUS)
+
+## Bewertung der Datenqualität
 
 - Liste von Merkmalen der Datenqualität:
+<!-- This may need to be pushed to a second slide? -->
 
   + Aktualität
   + Fehlerfreiheit
@@ -169,367 +219,380 @@ Verlinkung der eigenen Daten mit anderen Daten (ex.: LOD)
   + Vollständigkeit
   + Zugänglichkeit & Verfügbarkeit
 
-\scriptsize{\textbf{Quelle}: Deutsche Gesellschaft für Informations- und Datenqualität (DGIQ)}
-
-### Datenqualität definieren 
-
-- Liste von Merkmalen der Datenqualität:
-
-  + Aktualität
-  + Fehlerfreiheit
-  + Genauigkeit
-  + **Konformität**
-  + Konsistenz
-  + Transparenz & Vertrauenswürdigkeit
-  + Verlässlichkeit
-  + **Verständlichkeit**
-  + Vollständigkeit
-  + Zugänglichkeit & Verfügbarkeit
-
-\scriptsize{\textbf{Quelle}: Deutsche Gesellschaft für Informations- und Datenqualität (DGIQ)}
+\scriptsize\textbf{Quelle}: "Leitfaden für qualitativ hochwertige Daten und Metadaten", Fraunhofer FOKUS/NQDM, S. 14. https://www.nqdm-projekt.de/de/downloads/leitfaden
 
 
-### Datenqualität definieren 
+<!-- ## Datenqualität definieren  -->
+<!-- Delete? VB --> 
 
-- Bei diesem Workshop, werden wir vor allem auf **Konformität & Verständlichkeit** fokussieren
+<!-- - **Diskussion** -->
 
-  + Die andere Merkmale sind natürlich auch wichtig, sind aber sehr von einzelnen Datensätzen/Kontexte abhängig
+<!--   + Die Datenqualität kann anhand verschiedener Standards definiert werden -->
 
-### Datenqualität definieren 
+<!--   + Metadaten sind genauso wichtig wie die Daten selbst -->
 
-- **Diskussion**
+<!--   + Es gibt wichtige Prinzipe und Leitlinien... aber manchmal sind die nicht spezifisch genug! -->
 
-  + Die Datenqualität kann anhand verschiedener Standards definiert werden
-  
-  + Metadaten und Daten müssen beide optimisiert sein
+<!-- ## Relevanz von Datenqualität -->
 
-  + Es gibt wichtige Prinzipe und Leitlinien... aber manchmal sind die nicht spezifisch genug!
-
-## Relevanz von Datenqualität
+<!-- ### Schritte der Datenqualität -->
+<!-- Delete this slide? VB -->
 
 
-### Garbage in, garbage out
-\vspace{0.5cm}
-+ "Wenn die Daten schlecht sind, ist die Analyse nutzlos"
-\begin{center}
-\includegraphics[width=0.65\textwidth]{pic3}
-\end{center}
+<!-- + Drei Schritte, von denen die Datenqualität abhängt: -->
+
+<!--   1. **Data Generating Process** -->
+<!--       - Wie werden die Daten gesammelt? -->
 
 
-### Schritte der Datenqualität
+<!--   2. **Data Cleaning** -->
+<!--       - Wie sind die Datensatzdatei erstellt? -->
 
-+ Drei Schritte, von denen die Datenqualität abhängt:
 
-  1. **Data Generating Process**
-      - Wie werden die Daten gesammelt?
-   
-   
-  2. **Data Cleaning**
-      - Wie sind die Datensatzdatei erstellt?
-   
-   
-  3. **Data Publishing**
-       - Wie ist der Datensatz veröffentlicht?
-       
-+ Diese Schritte sind voneinander abhängig
+<!--   3. **Data Publishing** -->
+<!--        - Wie ist der Datensatz veröffentlicht? -->
+
+<!-- + Diese Schritte sind voneinander abhängig -->
 
 # *Quiz*
 
-### Datensatz von Berlin Open Data
+## Datensatz von Berlin Open Data
 
 + **Schulbausanierung Sommer 2020**
 
     + https://daten.berlin.de/datensaetze/schulbausanierung-sommer-2020
 
-### Schulbausanierung Sommer 2020
+## Schulbausanierung Sommer 2020
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{pic4}
+\includegraphics[width=0.9\textwidth]{images/pic4}
 \end{center}
 
-### Fragen
+## Fragen
 
 - Wie gut ist diesen Datensatz bezüglich der FAIR-Prinzipien?
-  
+
   + **Findable**: *Wo finde ich die Daten?*
-  + **Accessible**: *Wie kann ich die Daten zugreifen?*
-  + **Interoperable**: *Wie kann ich die Daten verwenden?*
-  + **Reusable**: *Wie kann ich die Daten replizieren?*
+  + **Accessible**: *Wie kann ich auf die Daten zugreifen?*
+  + **Interoperable**: *Wie leicht ist es, diese Daten zu verwenden?*
+  + **Reusable**: *Weiß ich, wie ich diese Daten wiedeerverwenden kann/darf?*
 
-- Wie optimal ist das Datenformat? 
-  
+- Wie optimal ist das Datenformat?
 
-### Analyse
+
+## Analyse
 
 
 - **Findable**: *Wo finde ich die Daten?*
 
-\includegraphics[align=c,width=.05\textwidth]{check} \textcolor{green}{\textbf{Datensatz registriert oder indiziert}}
-    
-\includegraphics[align=c,width=.05\textwidth]{wrong} \textcolor{red}{\textbf{Dauerhafte Identifikationsnummer}}
-    
-\includegraphics[align=c,width=.05\textwidth]{wavy} \textcolor{orange}{\textbf{Ausführliche Beschreibung}}
+\includegraphics[align=c,width=.05\textwidth]{images/check} \textcolor{green}{\textbf{Datensatz registriert oder indiziert}}
 
-###  Analyse
+\includegraphics[align=c,width=.05\textwidth]{images/wrong} \textcolor{red}{\textbf{Dauerhafte Identifikationsnummer}}
 
-- **Accessible**: *Wie kann ich die Daten zugreifen?*
-  
-\includegraphics[align=c,width=.05\textwidth]{check} \textcolor{green}{\textbf{Klar und kostenlosen Zugriffsprotokoll}}
-  
-\includegraphics[align=c,width=.05\textwidth]{check} \textcolor{green}{\textbf{Metadaten (Beschreibung der Daten) und Daten (Inhalt) sind abrufbar}}
-  
+\includegraphics[align=c,width=.05\textwidth]{images/wavy} \textcolor{orange}{\textbf{Ausführliche Beschreibung}}
 
-###  Analyse
+##  Analyse
 
-- **Interoperable**: *Wie kann ich die Daten verwenden?*
-  
-\includegraphics[align=c,width=.05\textwidth]{check} \textcolor{green}{\textbf{Formale und zugängliche Sprache}}
-  
-\includegraphics[align=c,width=.05\textwidth]{wrong} \textcolor{red}{\textbf{Verweise auf andere Daten}}
-  
-\includegraphics[align=c,width=.05\textwidth]{wavy} \textcolor{orange}{\textbf{Ermöglichte Integration mit anderen Datensätzen}}
-  
-  
-###  Analyse
+- **Accessible**: *Wie kann ich auf die Daten zugreifen?*
 
-- **Reusable**: *Wie kann ich die Daten replizieren?*
+\includegraphics[align=c,width=.05\textwidth]{images/check} \textcolor{green}{\textbf{Klar und kostenlosen Zugriffsprotokoll}}
 
-\includegraphics[align=c,width=.05\textwidth]{wrong} \textcolor{red}{\textbf{Detaillierter Herkunft}} 
-    
-\includegraphics[align=c,width=.05\textwidth]{check} \textcolor{green}{\textbf{Klare und zugängliche Datennutzungs -lizenz}}
+\includegraphics[align=c,width=.05\textwidth]{images/check} \textcolor{green}{\textbf{Metadaten (Beschreibung der Daten) und Daten (Inhalt) sind abrufbar}}
 
-###  Analyse
+
+##  Analyse
+
+- **Interoperable**: *Wie leicht ist es, diese Daten zu verwenden?*
+
+\includegraphics[align=c,width=.05\textwidth]{images/check} \textcolor{green}{\textbf{Formale und zugängliche Sprache}}
+
+\includegraphics[align=c,width=.05\textwidth]{images/wrong} \textcolor{red}{\textbf{Verweise auf andere Daten}}
+
+\includegraphics[align=c,width=.05\textwidth]{images/wavy} \textcolor{orange}{\textbf{Ermöglichte Integration mit anderen Datensätzen}}
+
+
+##  Analyse
+
+- **Reusable**: *Weiß ich, wie ich diese Daten wiederverwenden kann/darf?*
+
+\includegraphics[align=c,width=.05\textwidth]{images/wrong} \textcolor{red}{\textbf{Detaillierter Herkunft}}
+
+\includegraphics[align=c,width=.05\textwidth]{images/check} \textcolor{green}{\textbf{Klare und zugängliche Datennutzungs -lizenz}}
+
+##  Analyse
 
 - **Datenformat:**
 
 \begin{center}
 
-\includegraphics[align=c,width=.05\textwidth]{wavy} Aktuell = \textcolor{orange}{\textbf{Excel}}
-  
-\includegraphics[width=0.1\textwidth]{excel}
+\includegraphics[align=c,width=.05\textwidth]{images/wavy} Aktuell = \textcolor{orange}{\textbf{Excel}}
 
-\includegraphics[align=c,width=.05\textwidth]{check} Optimal = \textcolor{green}{\textbf{CSV}}
+\includegraphics[width=0.1\textwidth]{images/excel}
 
-\includegraphics[width=0.1\textwidth]{csv}
+\includegraphics[align=c,width=.05\textwidth]{images/check} Optimal = \textcolor{green}{\textbf{CSV}}
+
+\includegraphics[width=0.1\textwidth]{images/csv}
 
 \end{center}
 
+## Zusammenfassung Theorie
+<!-- New content added to this slide VB -->
 
-# 2. Anwendung
+- Datenqualität umfasst viele verschiedene Aspekte
 
-## Excel
+  + Nicht alle diese Aspekte könnten bei diesem Workshop angesprochen werden
 
-### Was ist eine Excel-Datei?
+- Heute: Besonderer Fokus auf der *Aufbereitung* von Datensätzen (Kontextunabhängig)
+
+  + Insbesondere: Konformität und Verständlichkeit (NQDM)
+
+
+# 2. Praxis
+
+# Excel
+
+## Was ist eine Excel-Datei?
 
 - Tabelle, die mit Excel bearbeitet werden kann
 
 - Komplexes Dateiformat
 
-- Stärker Fokus auf Human-Readability
+- Stärker Fokus auf Human-Readability (im Vergleich zu anderen Dateiformaten)
 
-### Zu vermeiden in Excel
+## Zu vermeiden in Excel
 
-- Überflüssige Text-Formatierung
+1. Überflüssige Text-Formatierung (insbesondere verbundene Zellen, leere Reihen, usw.)
 
-  - Effiziente Kategorisierung statt komplexes Farbsystem
-  
-### Zu vermeiden in Excel
+  - Kann die Maschinenlesbarkeit der Tabelle beeinträchtigen 
+  - Lieber effiziente Kategorisierung statt überbearbeitete Tabellen
 
-\vspace{1cm}  
+## Zu vermeiden in Excel
+
+\vspace{1cm}
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{wrong}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic5}
-\end{center}  
+\includegraphics[align=c,width=.8\textwidth]{images/pic5}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "Eintrittspreisregelungen öffentlich geförderter Berliner Kultureinrichtungen"}  
+\scriptsize\textbf{Quelle}: Open Data Portal, "Eintrittspreisregelungen öffentlich geförderter Berliner Kultureinrichtungen"
 
-### Zu vermeiden in Excel
-  
-\vspace{0.5cm}  
-  
+## Zu vermeiden in Excel
+
+\vspace{0.5cm}
+
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{check}
+\includegraphics[align=c,width=.1\textwidth]{images/check}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic6}
-\end{center}  
+\includegraphics[align=c,width=.8\textwidth]{images/pic6}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "Eintrittspreisregelungen öffentlich geförderter Berliner Kultureinrichtungen"}  
-  
-### Zu vermeiden in Excel
+\scriptsize\textbf{Quelle}: Open Data Portal, "Eintrittspreisregelungen öffentlich geförderter Berliner Kultureinrichtungen"
+
+## Zu vermeiden in Excel
 
 
 - Aktive Formeln
 
   - Daten sollten nicht versehentlich vom Benutzer geändert werden
-  
-  
+
+
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{wrong}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.6\textwidth]{pic7}
-\end{center}  
+\includegraphics[align=c,width=.6\textwidth]{images/pic7}
+\end{center}
 
 
 
 
-### Auswertung
+## Auswertung Excel-Dateien
 
-- **Vorteil**: bessere Darstellungsmöglichkeiten
+- **Vorteil**: Bessere Darstellungsmöglichkeiten
 
-- **Nachteil**: kann schnell nicht-maschinenlesbar werden
+- **Nachteil**: Können schnell nicht-maschinenlesbar werden
 
 
-## CSV
+# CSV
 
-### Was ist ein CSV?
+## Was ist ein CSV?
 
 - Text-Datei
 
 - Einfaches Dateiformat
 
-- Werte werden mit einem Trennzeichen abgetrennt 
+- Werte werden mit einem Trennzeichen abgetrennt ("Comma Separated Values")
 
 - Stärker Fokus auf Machine-Readability
 
-### Zu vermeiden in CSV
+## Was ist ein CSV?
+
+- So sieht ein CSV aus:
+
+\begin{center}
+\includegraphics[align=c,width=1\textwidth]{images/pic29}
+\end{center}
+
+\scriptsize\textbf{Quelle}: Open Data Portal, "COVID-19 in Berlin, Verteilung in den Bezirken - Gesamtübersicht"
+
+## Zu vermeiden in CSV
+<!-- New content added to this slide VB -->
+
 
 - Trennzeichen
 
-  - Verwendung von Trennzeichen an anderen Stellen (ex.: "10.5" ist besser als "10,5")
-  
-  
+  - Trennzeichen sollten nicht an anderen Stellen verwendet werden (z.B.: beim Trennzeichen "," sollte man "10.5" schreiben statt "10,5")
+
+
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{wrong}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic9_1}
-\end{center}  
+\includegraphics[align=c,width=.7\textwidth]{images/pic9_1}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "COVID-19 Fälle im Land Berlin, Verteilung nach Altersgruppen" \textbf{(verändert)}}  
+\scriptsize\textbf{Quelle}: Open Data Portal, "COVID-19 Fälle im Land Berlin, Verteilung nach Altersgruppen" \textbf{(verändert)}
 
 
 
-### Zu vermeiden in CSV
+## Zu vermeiden in CSV
+<!-- New content added to this slide VB -->
+
 
 - Trennzeichen
 
-  - Verwendung von Trennzeichen an anderen Stellen (ex.: "10.5" ist besser als "10,5")
-  
+  - Trennzeichen sollten nicht an anderen Stellen verwendet werden (z.B.: beim Trennzeichen "," sollte man "10.5" schreiben statt "10,5")
+
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{check}
+\includegraphics[align=c,width=.1\textwidth]{images/check}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic9_2}
-\end{center}  
+\includegraphics[align=c,width=.7\textwidth]{images/pic9_2}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "COVID-19 Fälle im Land Berlin, Verteilung nach Altersgruppen"}  
+\scriptsize\textbf{Quelle}: Open Data Portal, "COVID-19 Fälle im Land Berlin, Verteilung nach Altersgruppen"
 
-### Zu vermeiden in CSV
+## Zu vermeiden in CSV
 
 
 - Text-Formatierung
 
-  - Wird eh nicht angezeigt
+  - Wird sowieso nicht gespeichert / angezeigt
 
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{wrong}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic10_1}
-\end{center}  
+\includegraphics[align=c,width=.8\textwidth]{images/pic10_1}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher" \textbf{(verändert)}}  
+\scriptsize\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher" \textbf{(verändert)}
 
-### Zu vermeiden in CSV
+## Zu vermeiden in CSV
 
 
 - Text-Formatierung
 
-  - Wird eh nicht angezeigt
+  - Wird sowieso nicht gespeichert / angezeigt
 
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{check}
+\includegraphics[align=c,width=.1\textwidth]{images/check}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.8\textwidth]{pic10_2}
-\end{center}  
+\includegraphics[align=c,width=.8\textwidth]{images/pic10_2}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher"}  
+\scriptsize\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher"
 
 
 
-### Zu vermeiden in CSV
+## Zu vermeiden in CSV
 
 - Überschriften (außer Spaltennamen), Copyright-Hinweise, usw.
 
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{wrong}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
 \hspace{0.5cm}
-\includegraphics[align=c,width=.80\textwidth]{pic11}
-\end{center}  
+\includegraphics[align=c,width=.80\textwidth]{images/pic11}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Der Bundeswahlleiter, "Wahl zum 19. Deutschen Bundestag"}  
+\scriptsize\textbf{Quelle}: Der Bundeswahlleiter, "Wahl zum 19. Deutschen Bundestag"
 
-### Zu vermeiden in CSV
+## Zu vermeiden in CSV
 
 - Überschriften (außer Spaltennamen), Copyright-Hinweise, usw.
 
 
 \begin{center}
-\includegraphics[align=c,width=.1\textwidth]{check}
-\hspace{0.5cm}
-\includegraphics[align=c,width=.80\textwidth]{pic12}
-\end{center}  
+\includegraphics[align=c,width=.1\textwidth]{images/check}
+\includegraphics[align=c,width=.90\textwidth]{images/pic30}
+\end{center}
 
-\scriptsize{\textbf{Quelle}: Der Bundeswahlleiter, "Wahl zum 19. Deutschen Bundestag"}  
+\scriptsize\textbf{Quelle}: Der Bundeswahlleiter, "Wahl zum 19. Deutschen Bundestag"
 
 
-   
 
-### Hinweise
+
+## Hinweise
 
 - Zeichencodierung
 
-   + UTF-8 ist empfohlen
-   
-   + Dokument muss in einer bestimmten Codierung gespeichert werden
-   
-   + Codierungsprobleme beeinträchtigen die Lesbarkeit von Dokumenten
-   
-      + *Ex.*:
+   + Empfehlung: UTF-8 (die Defaultcodierung beim Speichern eines CSV in Excel)
 
+   + Die Codierung sollte bewusst ausgewählt werden und dem Endnutzer kommuniziert (z.B. in den Metadaten des Datensatzes im Open-Data-Portal)
+
+
+## Hinweise
+
+- Zeichencodierung
+
+   + Wenn ein Datensatz mit der "falschen" Codierung geöffnet wird, kommt es zu Probleme mit der Lesbarkeit des Datensatzes
+   
+      + *z.B.*:
 
 \begin{center}
-\includegraphics[width=.75\textwidth]{pic13}
-\end{center}  
+\includegraphics[width=.75\textwidth]{images/pic13}
+\end{center}
 
 
 
-### Hinweise
+## Hinweise
 
-- Zeichencodierung ändern
+- Wie die Zeichencodierung eines CSV beim Importieren in Excel zu ändern
 
   + Fichier -> Importer **(Tori: we'll change this to German)**
-  
+
      + Origine du fichier: UTF-8
 
 \begin{center}
-\includegraphics[width=.75\textwidth]{pic14}
-\end{center}  
+\includegraphics[width=.75\textwidth]{images/pic14}
+\end{center}
 
 
-### Auswertung
+## Auswertung CSV
 
-- **Vorteil**: am offensten
+- **Vorteil**: Am offensten
 
-- **Nachteil**: sehr einfache Darstellungsmöglichkeiten
+- **Nachteil**: Sehr einfache Darstellungsmöglichkeiten
 
-## Andere Formate
+# Formatentscheidung: Excel vs. CSV
+
+## Wann sollte man was nutzen?
+
+- In den meisten Fällen: CSVs
+
+- Excel benutzen wenn...
+
+  + es wichtig ist, dass die Tabellen lesbarer für Menschen sind (**aber denken Sie daran, dass die Tabelle maschinenlesabr bleiben muss!**)
+
+  + mehrere Blättern nötig sind
 
 
-### Daten Formate
+# Andere Formate
+
+
+## Daten Formate
 
 
 + **Nicht tabellarish**
@@ -537,44 +600,44 @@ Verlinkung der eigenen Daten mit anderen Daten (ex.: LOD)
   + JSON
 
   + GeoJSON
-    
+
 + **Tabellarisch**
 
    + SAV
 
    + DTA
-   
+
    + RData
 
-### Daten Formate
+## Daten Formate
 
 + JSON
 
   + "JavaScript Object Notation"
-  
+
   + Nicht tabellarisch, mehr flexibel
 
 \begin{center}
-\includegraphics[width=.75\textwidth]{pic15}
-\end{center}  
+\includegraphics[width=.75\textwidth]{images/pic15}
+\end{center}
 
 
-### Daten Formate
+## Daten Formate
 
 + GeoJSON
 
   + "Geographic JSON"
-  
+
   + Geografische Daten
-  
+
   + Basierend auf dem JSON-Format
 
 \begin{center}
-\includegraphics[width=.45\textwidth]{pic16}
-\end{center}  
+\includegraphics[width=.45\textwidth]{images/pic16}
+\end{center}
 
 
-### Daten Formate
+## Daten Formate
 
 + SAV
 
@@ -588,23 +651,13 @@ Verlinkung der eigenen Daten mit anderen Daten (ex.: LOD)
 
   + R Daten
 
-## Formatentscheidung
 
-### Wann solltet man was nutzen?
+# Häufige Probleme mit tabellarischen Datensätzen
 
-- Lieber CSVs bevorzugen
+## 5 Sachen zu überprüfen
+<!-- test -->
 
-- Excel benutzen wenn...
-
-  + es wichtig ist, dass die Tabellen etwas lesbarer für Menschen werden (vs. für andere Programme)
-  
-  + mehrere Blättern nötig sind
-
-## Doppelcheckliste
-
-### 5 Sachen zu überprüfen
-
-1. Nummern
+1. Zahlen
 
 2. Daten
 
@@ -614,147 +667,215 @@ Verlinkung der eigenen Daten mit anderen Daten (ex.: LOD)
 
 5. Identifikationsnummer
 
-### 1. Nummern
+<!-- Empty values / NAs? -->
 
-+ Dezimaltrennzeichen (0.1 vs. 0,1)
+## 1. Zahlen
 
-  + Anders von Land zu Land
-  
-  + **Deutschland**: Komma System
++ **Für Ganzzahlen**: Keine Leerzeichen oder Kommata verwenden
 
 \begin{center}
-\includegraphics[width=0.8\textwidth]{pic17}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic22}
+\hspace{0.5cm}    
+\includegraphics[align=c,width=.1\textwidth]{images/check}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic21}
 \end{center}
 
-### 2. Daten
+<!-- https://daten.berlin.de/datensaetze/verbraucherpreisindex-im-land-berlin-und-brandenburg -->
 
-+ Reihenfolge der Tage, Monate und Jahre & Trennzeichen
 
-  + Anders von Land zu Land
-  
-  + **Deutschland**: DD.MM.YY oder DD.MM.YYYY
+## 1. Zahlen
+
++ **Für Dezimalzeichen**: Immer einen Punkt verwenden (0.1 vs. 0,1)
+
+\begin{center}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic23}
+\hspace{0.5cm}    
+\includegraphics[align=c,width=.1\textwidth]{images/check}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic24}
+\end{center}
+
+<!-- https://daten.berlin.de/datensaetze/verbraucherpreisindex-im-land-berlin-und-brandenburg -->
+
+
+\center{\tiny{\textbf{Mehr Dazu}: NQDM: "Leitfaden für qualitativ hochwertige Daten und Metadaten", S. 24. https://www.nqdm-projekt.de/de/downloads/leitfaden} }
+
+
+## 2. Daten
+
++ Empfehlung des NQDM: ISO-8601-Format nutzen
+
+  + JJJJ-MM-TT (z.B.: 2020-09-17)
   
 \begin{center}
-\includegraphics[width=0.75\textwidth]{pic18}
+\includegraphics[align=c,width=.1\textwidth]{images/wrong}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic25}
+\hspace{0.5cm}    
+\includegraphics[align=c,width=.1\textwidth]{images/check}
+\hspace{0.5cm}
+\includegraphics[align=c,width=.25\textwidth]{images/pic26}
 \end{center}
 
+<!-- https://daten.berlin.de/datensaetze/berliner-stra%C3%9Fen-und-volksfeste-2020 -->
 
-### 3. Standorte
 
-+ **Koordinaten**
+\center{\tiny{\textbf{Mehr Dazu}: NQDM: "Leitfaden für qualitativ hochwertige Daten und Metadaten", S. 20. https://www.nqdm-projekt.de/de/downloads/leitfaden} }
 
-  + Google-API (Adressen -> Koordinaten)
 
-  + Koordinatensystem angeben
+## 3. Standorte
+
+Zwei Möglichkeiten:
+
+1. **Koordinaten**
+
+  + Die beste Wahl (am genausten)
   
-+ **Adressen**
-
-  + Konformität der Abkurzugen innerhalb des Dokumentes
+  + RBS-Geocoder (vom Amt für Statistik)
   
-     + Ex.: "Straße" vs. "Str."
+## 3. Standorte
 
-### 4. Tippfehler
+2. **Adressen**
 
-+ Spalten per Kategorie sortieren
+  + Empfehlung: Straße, Hausnummer und PLZ trennen
+  
+\begin{center}
+\includegraphics[align=c,width=.50\textwidth]{images/pic27}
+\end{center}
+
+<!-- https://daten.berlin.de/datensaetze/gedenktafel-datenbank-berlin-mitte-2 -->
+
+## 3. Standorte
+
+2. **Adressen**
+  
+  + Darauf beachten: Adressen möglichst einheitlich erfassen
+
+     + zB.: "Straße" vs. "Str."
+
+## 4. Tippfehler
+
++ Mit der Anwendung eines Filters in Excel kann man Tippfehler leicht identifizieren 
 
    + Données -> Filtre avancé -> Extraction sans doublon
 
+<!-- German transaltion pending VB -->
+
 \begin{center}
-\includegraphics[width=0.5\textwidth]{pic19}
+\includegraphics[width=0.5\textwidth]{images/pic19}
 \end{center}
 \vspace{-0.5cm}
-\center{\tiny{\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher"} }
+\center\tiny\textbf{Quelle}: Open Data Portal, "Liste der verbannten Bücher"
 
 + Rechtschreibkorrektur in Excel aktivieren
 
-### 5. ID Nummer
+## 4. Tippfehler
 
-+ Eine Identifikationsnummer pro Beobachtung 
++ Technologiestiftung Tool zum Aufräumen eines CSV
 
-   + Meistens eine pro Reihe
-   
+\begin{center}
+\includegraphics[align=c,width=.75\textwidth]{images/pic28}
+\end{center}
+
+https://lab.technologiestiftung-berlin.de/projects/csv-string-optimization/de/
+  
+## 5. ID Nummer
+
++ Für Datensätze, wo die Angaben eine Bezeichnung/ID-Nummer haben: diese Nummer sollte im Datensatz drin sein! 
+
+    + z.B. Die Bezeichnungsnummer einer Schule
+
 + Wichtig um...
 
   + Änderungen zu verfolgen
-  
+
   + Datensätze zusammenzuführen
 
+## Das wichtigste von allen: Einheitlichkeit
+
++ Wählen Sie einen Standard aus - am besten einen von uns empofhlenen Standard - und **ziehen Sie diesen Standard konsequent durch**
 
 # *Quiz*
 
-### Schulbausanierung Sommer 2020
+## Schulbausanierung Sommer 2020
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{pic4}
+\includegraphics[width=0.9\textwidth]{images/pic4}
 \end{center}
 
-### Fragen
+## Fragen
 
- + In Excel, sortieren sie die Eingaben bei Finanzierung. Merken Sie etwas, was verbessert sein könnte?
- 
- + Merken Sie sich die Addressen in der "Adresse" Spalte. Was könnte besser gemacht werden?
- 
- + Wie kann man den Datensatz zu CSV konvertieren und speichern? 
- 
-### Analyse
- 
- - **Finanzierung Spalte**
- 
-    + Konsistenz ist wichtig
-    
+ + In Excel, sortieren Sie die Eingaben nach Finanzierung. Merken Sie etwas, was verbessert sein könnte?
+
+ + Schauen Sie sich die Addressen in der "Adresse" Spalte an. Was könnte hier optimiert werden?
+
+ + Wie kann man den Datensatz zu einem CSV konvertieren und speichern?
+
+## Analyse
+
+ - **Finanzierung-Spalte**
+
+    + Einheitlichkeit ist wichtig
+
     + Auf Typos achten!
 
 \begin{center}
-\includegraphics[width=0.55\textwidth]{quiz2}
-\end{center}   
-    
-### Analyse
- 
- - **Adresse Spalte**
- 
+\includegraphics[width=0.55\textwidth]{images/quiz2}
+\end{center}
+
+## Analyse
+
+ - **Adresse-Spalte**
+
     + "Straße" oder "Str."?
- 
+
 \begin{center}
-\includegraphics[width=0.45\textwidth]{quiz2_2}
+\includegraphics[width=0.45\textwidth]{images/quiz2_2}
 \end{center}
 
 # 3. Beispiel
 
-### Giez den Kiez
+## Gieß den Kiez
 
 \begin{center}
-\includegraphics[width=.95\textwidth]{giez}
+\includegraphics[width=.95\textwidth]{images/giez}
 \end{center}
 
-### Giez den Kiez
+## Gieß den Kiez
 
 \begin{center}
-\includegraphics[width=.95\textwidth]{giez_2}
+\includegraphics[width=.95\textwidth]{images/giez_2}
 \end{center}
 
-### Fehlende ID Nummer
+## Fehlende ID Nummer
 
-+ **Ziel**: 
++ **Ziel**:
 
-  + Bewasserungdaten von der Regierung in den Giez den Kiez Datensatz hinzufügen
+  + Bewässerungsdaten von der Regierung in den Gieß den Kiez Datensatz hinzufügen
 
-+ **Problem**: 
++ **Problem**:
 
   + Kein gemeinsame Identifikationsnummer zwischen:
-  
-    1. Bewasserungdaten von der Regierung
-    
-    2. Bewasserungdaten von Giez den Kiez
-    
-### Versuch #1
 
-+ **Methode**: ID selber von mehrere Spalten generieren
+    1. Bewässerungdaten von der Regierung
+
+    2. Bewässerungdaten von Gieß den Kiez
+
+<!-- Welche sind die Bewässerungsdaten von GdK? -->
+
+## Versuch #1
+
++ **Methode**: ID aus verschiedenen Spalten generieren
 
    + Pflanzjahr + Standalter + Stammumfang + Stammdurchmesser + Baumhöhe + Kronendurchmesser + Sorte
-    
+
 \begin{center}
-\includegraphics[width=.6\textwidth]{pic20}
+\includegraphics[width=.6\textwidth]{images/pic20}
 \end{center}
 
 + **Problem**: Duplikate (i.e. Bäume mit identischen Charakteristiken im Datensazt)
-
